@@ -31,7 +31,7 @@ public class PullingJump : MonoBehaviour
             //クリックとリリースが同じ座標なら無視
             if (dragVector.sqrMagnitude == 0) { return; }
 
-            rb.velocity = dragVector.normalized * jumpSpeed;
+            rb.velocity = dragVector.normalized * jumpSpeed;//正規化後にジャンプ力をかける(jumpSpeedが加わっていない)
         }
     }
 }
