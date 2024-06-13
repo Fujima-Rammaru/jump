@@ -86,4 +86,5 @@ public class PullingJump : MonoBehaviour
         Debug.Log("—£’E‚µ‚½");
         isJump = false;
     }
+
 }
