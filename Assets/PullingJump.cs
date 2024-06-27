@@ -40,11 +40,7 @@ public class PullingJump : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.name + "衝突した");
-        //ContactPoint[] contacts = collision.contacts;
-        ////0番目の衝突情報から、衝突している点の法線を取得。
-        //Vector3 otherNormal = contacts[0].normal;
-        //float angle=Vector3.Angle(otherNormal,Vector3.up);
-
+      
         ContactPoint[] contacts = collision.contacts;
         //0番目の衝突情報から、衝突している点の法線を取得。
         Vector3 otherNormal = contacts[0].normal;
