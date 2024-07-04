@@ -6,7 +6,7 @@ public class PullingJump : MonoBehaviour
 {
     Rigidbody rb;
     [SerializeField]
-    float jumpSpeed = 20;
+    private float jumpSpeed = 20.0f;
     Vector3 clickPosition;
     float groundAngleRimit = 30.0f;
     bool isJump = false;
@@ -15,6 +15,7 @@ public class PullingJump : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
+        jumpSpeed = 20.0f;
     }
 
     // Update is called once per frame
@@ -32,7 +33,11 @@ public class PullingJump : MonoBehaviour
 
             //クリックとリリースが同じ座標なら無視
             if (dragVector.sqrMagnitude == 0) { return; }
-
+            jumpSpeed = dragVector.magnitude * 0.1f;
+            if (jumpSpeed > 20.0f)
+            {
+                jumpSpeed = 20.0f;
+            }
             rb.velocity = dragVector.normalized * jumpSpeed;//正規化後にジャンプ力をかける(jumpSpeedが加わっていない)
         }
     }
@@ -40,7 +45,7 @@ public class PullingJump : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.name + "衝突した");
-      
+
         ContactPoint[] contacts = collision.contacts;
         //0番目の衝突情報から、衝突している点の法線を取得。
         Vector3 otherNormal = contacts[0].normal;
